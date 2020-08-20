@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>OpenCV学习笔记（一）基本功能</title>
+      <link href="/2020/08/14/OpenCV%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD/"/>
+      <url>/2020/08/14/OpenCV%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、图像载入与显示"><a href="#一、图像载入与显示" class="headerlink" title="一、图像载入与显示"></a>一、图像载入与显示</h2><h3 id="读取图像"><a href="#读取图像" class="headerlink" title="读取图像"></a>读取图像</h3><p>使用函数cv2.imread() :</p><pre><code class="python">img = cv2.imread(filepath, flag)</code></pre><p>filepath：要读入图片的完整路径.</p><p>flag：读入图片的标志 ：</p><ul><li>cv2.IMREAD_COLOR：默认参数，读入一副彩色图片，忽略alpha通道（即不使用透明度），其值为1.</li><li>cv2.IMREAD_GRAYSCALE：读入灰度图片，其值为0.</li><li>cv2.IMREAD_UNCHANGED：读入完整图片，包括alpha通道，其值为-1.</li></ul><blockquote><p>注：若图像路径设置错误，并不会报错，此时img的值为None</p></blockquote><h3 id="显示图像"><a href="#显示图像" class="headerlink" title="显示图像"></a>显示图像</h3><p>使用函数cv2.imshow() :</p><pre><code class="python">cv2.imshow(WindowName, img)  # 将图片img显示在WindowName指定的窗口中cv2.waitKey(0)&#39;&#39;&#39;waitKey()是一个键盘绑定函数，函数参数单位为毫秒，即在指定毫秒数内等待是否有键盘输入，若有则返回输入值，否则返回-1由于计算机系统有延迟，故实际等待的时间应为大于指定的时间如果参数为0，则程序会一直停止直到任意一个键输入并返回其值&#39;&#39;&#39;cv2.destroyAllWindows()  # 清除所有窗口</code></pre><blockquote><p>若cv2.imshow() 中指定的窗口不存在，则会自动生成一个名为WindowName的窗口，也可以使用cv2.namedWindow(name,flag) 来手动生成窗口.</p><p>清除窗口时还可以用cv2.destroyWindow(WindowName), 来清楚指定窗口.</p></blockquote><h3 id="保存图像"><a href="#保存图像" class="headerlink" title="保存图像"></a>保存图像</h3><p>使用函数cv2.imwrite()：</p><pre><code class="python">cv2.imwrite(filepath, img)  # 将图像img以PNG格式保存在filepath位置</code></pre><p><strong>下面给出一个完整实例：</strong></p><p>将图像以灰度图格式载入，显示之，若输键盘入’s‘ 则保存并退出，或按’ESC‘ 直接退出不保存.</p><pre><code class="python">import cv2img = cv2.imread(&#39;test.jpg&#39;, 0)cv2.imshow(&#39;image&#39;, img)key = cv2.waitKey(0)if key == 27:  # 27为ESC键的值，输入为ESC则直接退出    cv2.destroyAllWindows()elif key == ord(&#39;s&#39;):  # 输入为&#39;s&#39;键则保存并退出    cv2.imwrite(&#39;test.png&#39;, img)    cv2.destroyAllWindows()</code></pre><blockquote><p>注意：在某些机器上返回的键盘值不是ASCII编码的，可能需要将 key = cv2.waitKey(0) 改成key = cv2.waitKey(0) &amp;&amp; 0xFF，从而使key只取最后一个字节</p></blockquote><h2 id="二、视频载入与显示"><a href="#二、视频载入与显示" class="headerlink" title="二、视频载入与显示"></a>二、视频载入与显示</h2><h3 id="从本地载入视频"><a href="#从本地载入视频" class="headerlink" title="从本地载入视频"></a>从本地载入视频</h3><p>为了播放视频，需要使用VideoCapture对象，其参数可以为视频文件的路径或者摄像头的编号. </p><pre><code class="python">import cv2cap = cv2.VideoCapture(0)while(cap.isOpened()):  # 当获取的视频不为空时    ret, frame = cap.read()  # 读取一帧画面，返回两个参数，ret记录获取情况是否异常，frame记录图像该帧图像    flip = cv2.flip(frame, 1)  # 翻转图像，第二个参数为0表示x轴，1表示y轴    cv2.imshow(&#39;video&#39;, flip)  # 显示y轴翻转后的图像    if cv2.waitKey(25) == 27:        breakcap.release()  # 释放cv2.destroyAllWindows()</code></pre><blockquote><p>注意：此处为逐帧读取并逐帧显示视频，因此waitKey()所等待的时间将会决定视频播放的速度。例如对于24帧的视频，即24帧每秒，考虑到计算机本身的运行时间，一般需设置等待20~40ms.</p></blockquote><h3 id="从摄像头获取视频"><a href="#从摄像头获取视频" class="headerlink" title="从摄像头获取视频"></a>从摄像头获取视频</h3><p>类似上述方法，只需将：</p><pre><code class="python">cap = cv2.VideoCapture(&#39;video.avi&#39;)</code></pre><p>改为：</p><pre><code class="python">cap = cv2.VideoCapture(0)  # 一般计算机只有一个摄像头，编号可输入0或-1</code></pre><h3 id="保存视频"><a href="#保存视频" class="headerlink" title="保存视频"></a>保存视频</h3><p>保存视频时，需要使用VideoWriter对象，并使用VideoWriter_fourcc函数编码FourCC格式</p><p>VideoWriter初始化格式为：</p><pre><code class="python">VideoWriter(filename, fourcc, fps, frameSize[, isColor])</code></pre><ul><li>第一个参数为文件路径</li><li>fourcc指定编码格式</li><li>fps为帧率</li><li>frameSize为画面尺寸</li><li>isColor指定黑白或彩色</li></ul><p>VideoWriter_fourcc()使用方法为：</p><pre><code class="python">fourcc = VideoWriter_fourcc(&#39;M&#39;, &#39;J&#39;, &#39;P&#39;, &#39;G&#39;)#或者使用：fourcc = VideoWriter_fourcc(*&#39;MJPG&#39;)</code></pre><p>这里并不建议使用OpenCV处理视频，最好使用FFmpeg等工具，下面给出实例：</p><pre><code class="python">import cv2cap = cv2.VideoCapture(0)#设置fourcc 并创建VideoWriter 对象fourcc = cv2.VideoWriter_fourcc(*&#39;XVID&#39;)save = cv2.VideoWriter(&#39;save.avi&#39;, fourcc, 24, (640, 480), True)while(cap.isOpened()):    ret, frame = cap.read()    if ret == True:        frame = cv2.flip(frame, 1)        #保存此帧图像        save.write(frame)        cv2.imshow(&#39;cap&#39;, frame)        if cv2.waitKey(1) &amp; 0xFF == 27:            break    else:        breakcap.release()save.release()cv2.destroyAllWindows()</code></pre><blockquote><p>注意：若要保存为黑白视频，除了需要将VideoWriter() 中isColor 参数设置为False 外，还需要将存储的图像转化为灰度图，即：</p><pre><code class="python">frame = cv2.flip(frame, 1)#转换颜色为灰度图frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)#保存此帧黑白图像save.write(frame)</code></pre><p>最后保存的即为黑白视频</p></blockquote><h2 id="三、图像上简单的绘画"><a href="#三、图像上简单的绘画" class="headerlink" title="三、图像上简单的绘画"></a>三、图像上简单的绘画</h2><h3 id="使用参数画出特定形状"><a href="#使用参数画出特定形状" class="headerlink" title="使用参数画出特定形状"></a>使用参数画出特定形状</h3><table><thead><tr><th>形状</th><th>函数</th></tr></thead><tbody><tr><td>直线</td><td>cv2.line(img, (x1, y1), (x2, y2), (b, g, r), thickness)</td></tr><tr><td>矩形</td><td>cv2.rectangle(img, (x1, y1), (x2, y2), (b, g, r), thickness) #坐标分别为左下、右上</td></tr><tr><td>圆</td><td>cv2.circle(img, radius, (x0, y0), (b, g, r), thickness) #thickness取-1表示填满</td></tr><tr><td>椭圆</td><td>cv2.ellipse(img, (x0, y0), (a, b), )</td></tr><tr><td>多边形</td><td></td></tr><tr><td>文字</td><td></td></tr></tbody></table><h3 id="用鼠标画图"><a href="#用鼠标画图" class="headerlink" title="用鼠标画图"></a>用鼠标画图</h3><h2 id="四、图像控制"><a href="#四、图像控制" class="headerlink" title="四、图像控制"></a>四、图像控制</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> Programing </category>
+          
+          <category> DIP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OpenCV </tag>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
