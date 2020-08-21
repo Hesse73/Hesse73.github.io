@@ -5,16 +5,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Python获取OpenCV官方文档并保存为Markdown文件 - Mind Groceries</title>
+    <title>Python实现N体运行模拟 - Mind Groceries</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Computer Blog Obsidian,"> 
-    <meta name="description" content="I love chocolate,看到一个html转markdown的工具，拿来试试保存OpenCV文档&amp;lt;(￣︶￣)
+    <meta name="description" content="I love chocolate,无意中翻到今年程序课的一个有意思的小练习，先把代码贴着，有空再来写
+主程序:
+import pygame
+import sys
 
-OpenCV官网文档：如图所示，“top”和“footer”部分是不需要的内容，直接删除即可：
+from settings import Settings
 
-网页中的,"> 
+
+cl,"> 
     <meta name="author" content="Huang C"> 
     <link rel="alternative" href="atom.xml" title="Mind Groceries" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -61,7 +65,7 @@ OpenCV官网文档：如图所示，“top”和“footer”部分是不需要�
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://github.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">Python获取OpenCV官方文档并保存为Markdown文件</h3>
+        <h3 class="subtitle">Python实现N体运行模拟</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -94,22 +98,22 @@ OpenCV官网文档：如图所示，“top”和“footer”部分是不需要�
                 <a href="/categories/Programing"><b>「
                     </b>PROGRAMING<b> 」</b></a>
                 
-                August 21, 2020
+                June 30, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2020/08/21/Python%E8%8E%B7%E5%8F%96OpenCV%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%B9%B6%E4%BF%9D%E5%AD%98%E4%B8%BAMarkdown%E6%96%87%E4%BB%B6/" title="Python获取OpenCV官方文档并保存为Markdown文件" class="">Python获取OpenCV官方文档并保存为Markdown文件</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/06/30/Python%E5%AE%9E%E7%8E%B0N%E4%BD%93%E8%BF%90%E8%A1%8C%E6%A8%A1%E6%8B%9F/" title="Python实现N体运行模拟" class="">Python实现N体运行模拟</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    3.7k
+                    5.1k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    3 mins.
+                    5 mins.
                 </span>
                 
                 
@@ -122,7 +126,7 @@ OpenCV官网文档：如图所示，“top”和“footer”部分是不需要�
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Beautiful-Soup/" rel="tag">Beautiful Soup</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Pygame/" rel="tag">Pygame</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
             
         </div>
     </div>
@@ -143,77 +147,188 @@ OpenCV官网文档：如图所示，“top”和“footer”部分是不需要�
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>看到一个html转markdown的工具，拿来试试保存OpenCV文档&lt;(￣︶￣)</p>
-<hr>
-<h3 id="OpenCV官网文档："><a href="#OpenCV官网文档：" class="headerlink" title="OpenCV官网文档："></a>OpenCV官网文档：</h3><p>如图所示，“top”和“footer”部分是不需要的内容，直接删除即可：</p>
-<p><img src="/2020/08/21/Python%E8%8E%B7%E5%8F%96OpenCV%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%B9%B6%E4%BF%9D%E5%AD%98%E4%B8%BAMarkdown%E6%96%87%E4%BB%B6/Pic1.png" alt="官网页面"></p>
-<p>网页中的代码框并非使用code标签，需要更改：<br><img src="/2020/08/21/Python%E8%8E%B7%E5%8F%96OpenCV%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%B9%B6%E4%BF%9D%E5%AD%98%E4%B8%BAMarkdown%E6%96%87%E4%BB%B6/Pic2.png" alt="代码框"></p>
-<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><pre><code class="python">import requests
-from bs4 import BeautifulSoup
-import html2text as ht
+            <p>无意中翻到今年程序课的一个有意思的小练习，先把代码贴着，有空再来写</p>
+<p>主程序:</p>
+<pre><code class="python">import pygame
+import sys
 
-#打开并解析网页
-html = requests.get(
-    &#39;https://docs.opencv.org/master/d3/df2/tutorial_py_basic_ops.html&#39;).text
-soup = BeautifulSoup(html)
-#删除top和address
-soup.find(&#39;div&#39;, id=&#39;top&#39;).extract()
-soup.find(&#39;address&#39;, class_=&#39;footer&#39;).extract()
-#为了美观，将网页页眉的标签改为&lt;h1&gt;
-header = soup.find(&#39;div&#39;, class_=&#39;header&#39;)
-new_h = soup.new_tag(&#39;h1&#39;)
-new_h.append(header.text)
-header.insert_after(new_h)
-#删除原页眉内容
-soup.find(&#39;div&#39;, class_=&#39;headertitle&#39;).extract()
-#将网页中的代码框替换为&lt;code&gt;格式
-for fragment in soup.find_all(&#39;div&#39;, class_=&#39;fragment&#39;):
-    &#39;&#39;&#39;
-    遍历所有的代码框，在其中添加code标签
-    并将原有内容按行复制到code标签中
-    &#39;&#39;&#39;
-    new_tag = soup.new_tag(&#39;code&#39;)
-    for line in fragment.contents:
-        new_p = soup.new_tag(&#39;p&#39;)
-        new_p.append(line.text)
-        new_tag.append(new_p)
-    fragment.insert_after(new_tag)
-#删除原有的代码
-for line in soup.find_all(&#39;div&#39;, class_=&#39;line&#39;):
-    line.extract()
+from settings import Settings
 
-html = str(soup)
-#使用html2text工具将html转为Markdown
-md = ht.HTML2Text()
-md.ignore_links = True
-mdfile = md.handle(html)
-#这里可能是html2text的问题，不能将code格式转为代码块，故手动改一下
-mdfile = mdfile.replace(&#39;`&#39;, &#39;```&#39;)
-file = open(&#39;test.md&#39;, &#39;w&#39;)
-file.write(mdfile)</code></pre>
-<h3 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h3><p>结果非常的Amazing啊！不多说，上图片：</p>
-<p><img src="/2020/08/21/Python%E8%8E%B7%E5%8F%96OpenCV%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%B9%B6%E4%BF%9D%E5%AD%98%E4%B8%BAMarkdown%E6%96%87%E4%BB%B6/Pic3.png" alt="MarkDown结果"></p>
-<p>这里再贴上用Hexo渲染的一段：</p>
+
+class Vector():
+    &quot;&quot;&quot;向量&quot;&quot;&quot;
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.mould = (x*x+y*y)**0.5
+
+
+def vec_minus(vec1, vec2):
+    &quot;&quot;&quot;向量相减（vec1 - vec2）&quot;&quot;&quot;
+    return Vector(vec1.x-vec2.x, vec1.y-vec2.y)
+
+
+def vec_add(vec1, vec2):
+    &quot;&quot;&quot;向量相加&quot;&quot;&quot;
+    return Vector(vec1.x+vec2.x, vec1.y+vec2.y)
+
+
+def vec_mult(num, vec):
+    &quot;&quot;&quot;向量数乘&quot;&quot;&quot;
+    return Vector(num*vec.x, num*vec.y)
+
+
+def judge_crash(body1, body2):
+    &quot;&quot;&quot;判断是否相撞&quot;&quot;&quot;
+    if vec_minus(body1.curR, body2.curR).mould &lt; 0.5:
+        return True
+    return False
+
+
+class Force():
+    &quot;&quot;&quot;类：力，可添加其他种类的作用力&quot;&quot;&quot;
+
+    def __init__(self):
+        self.vec = Vector(0, 0)
+
+    def gravity(self, body1, body2):
+        &quot;&quot;&quot;计算万有引力&quot;&quot;&quot;
+        G = 6.67384e-11
+        delta = vec_minus(body2.curR, body1.curR)
+        F_g = vec_mult(G*body1.m*body2.m/(delta.mould ** 3), delta)
+        self.vec = vec_add(self.vec, F_g)
+
+
+class Body():
+    &quot;&quot;&quot;类：天体&quot;&quot;&quot;
+
+    def __init__(self, m, curR, preR, screen, body_settings):
+        self.m = m
+        self.curR = curR
+        self.preR = preR
+        self.f = Force()
+        self.screen = screen
+        self.color = body_settings.body_color
+        self.radius = body_settings.body_radius
+        self.zerox = body_settings.screen_width / 2
+        self.zeroy = body_settings.screen_height / 2
+
+    def draw(self):
+        &quot;&quot;&quot;显示&quot;&quot;&quot;
+        self.x = (int)(self.zerox + self.curR.x)
+        self.y = (int)(self.zeroy + self.curR.y)
+        self.pos = (self.x, self.y)
+        pygame.draw.circle(self.screen, self.color, self.pos, self.radius, 0)
+
+
+def move(bodys, body_settings):
+    &quot;&quot;&quot;根据牛顿第二定律，对天体进行移动&quot;&quot;&quot;
+    #先求出所有物体所受的力
+    for bodyi in bodys:
+        bodyi.f = Force()
+        for bodyj in bodys:
+            if bodyi != bodyj:
+                if judge_crash(bodyi, bodyj):
+                    return -1
+                bodyi.f.gravity(bodyi, bodyj)
+    #对所有星体的v,r进行计算
+    for bodyi in bodys:
+        dr = vec_minus(bodyi.curR, bodyi.preR)
+        delta = vec_mult(body_settings.dt**2/bodyi.m, bodyi.f.vec)
+        dr = vec_add(dr, delta)
+        bodyi.preR = bodyi.curR
+        bodyi.curR = vec_add(bodyi.curR, dr)
+
+
+def check_quit():
+    &quot;&quot;&quot;检查是否退出&quot;&quot;&quot;
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit(0)
+
+
+def show_crash_error(screen, body_settings):
+    &quot;&quot;&quot;显示相撞的错误信息&quot;&quot;&quot;
+    screen.fill((0, 0, 0))
+    fontObj = pygame.font.Font(None, 70)
+    #render方法返回Surface对象
+    textSurfaceObj = fontObj.render(
+        &#39;Error: Crashed!&#39;, True, (255, 0, 0), (0, 0, 255))
+    #get_rect()方法返回rect对象
+    textRectObj = textSurfaceObj.get_rect()
+    textRectObj.center = (body_settings.screen_width//2,
+                          body_settings.screen_height//2)
+    screen.blit(textSurfaceObj, textRectObj)
+    pygame.display.flip()
+
+
+#初始化pygame以及相关设置
+pygame.init()
+body_settings = Settings()
+screen = pygame.display.set_mode(
+    (body_settings.screen_width, body_settings.screen_height))
+
+#读取天体配置文件
+filename = sys.path[0]+&#39;\\Nbody.txt&#39;
+with open(filename) as file_object:
+    lines = file_object.readlines()
+body_num = int(lines[0])
+body_settings.dt = 1/int(lines[1])
+bodys = []
+for i in range(body_num):
+    paras = lines[i+2].split(&#39; &#39;, 4)
+    mass = float(paras[0])
+    curR = Vector(float(paras[1]), float(paras[2]))
+    veloc = Vector(float(paras[3]), float(paras[4]))
+    preR = vec_minus(curR, vec_mult(body_settings.dt, veloc))
+
+    bodyi = Body(mass, curR, preR, screen, body_settings)
+    bodys.append(bodyi)
+
+pygame.display.set_caption(&quot;Verlet-method N-body Simulation&quot;)
+
+#开始循环
+while(1):
+    check_quit()
+    screen.fill(body_settings.bg_color)
+    if move(bodys, body_settings) == -1:
+        break
+    for bodyi in bodys:
+        bodyi.draw()
+    pygame.display.flip()
+
+show_crash_error(screen, body_settings)
+
+while(1):
+    check_quit()</code></pre>
+<p>配置文件和数据：</p>
+<pre><code class="python">class Settings():
+    def __init__(self):
+        self.screen_width = 750
+        self.screen_height = 750
+        self.bg_color = (0, 0, 0)
+        self.body_color = (225, 225, 153)
+        self.body_radius = 5
+        self.dt = 1/10000</code></pre>
+<pre><code class="txt">3
+500000
+5.97e15 0.0 0.0 10000.0 0.0
+1.989e21 0.0 45 3.0e4 0.0
+1.989e21 0.0 -45 -3.0e4 0.0
+2
+20000
+1.0e20 0.0 300 1.0e3 0.0
+1.0e20 0.0 -300 -1.0e3 0.0
+3
+10000
+1.0e20 0.0 0.0 0.0 0.0
+1.0e5 0.0 266.8 5.0e3 0.0
+1.0e5 0.0 -266.8 -5.0e3 0.0</code></pre>
+<p>算法很简单，毕竟不是物理专业，只不过是用了下面这个公式（其实就是微积分）<br>$$<br>r_{n+1} = r_n +(r_n - r_{n-1}) + a_n{dt}^2<br>$$</p>
 <blockquote>
-<h1 id="Basic-Operations-on-Images"><a href="#Basic-Operations-on-Images" class="headerlink" title="Basic Operations on Images"></a>Basic Operations on Images</h1><h2 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h2><p>Learn to:</p>
-<ul>
-<li>Access pixel values and modify them</li>
-<li>Access image properties</li>
-<li>Set a Region of Interest (ROI)</li>
-<li>Split and merge images</li>
-</ul>
-<p>Almost all the operations in this section are mainly related to Numpy rather<br>than OpenCV. A good knowledge of Numpy is required to write better optimized<br>code with OpenCV.</p>
-<p><em>( Examples will be shown in a Python terminal, since most of them are just single lines of code )</em></p>
-<h2 id="Accessing-and-Modifying-pixel-values"><a href="#Accessing-and-Modifying-pixel-values" class="headerlink" title="Accessing and Modifying pixel values"></a>Accessing and Modifying pixel values</h2><p>Let’s load a color image first:</p>
-<pre><code class="python">&gt;&gt;&gt; import numpy as np
-
-&gt;&gt;&gt; import cv2 as cv
-
-&gt;&gt;&gt; img = cv.imread(&#39;messi5.jpg&#39;)
-</code></pre>
-<p>You can access a pixel value by its row and column coordinates. For BGR image,<br>it returns an array of Blue, Green, Red values. For grayscale image, just<br>corresponding intensity is returned.</p>
+<p>Verlet Method</p>
 </blockquote>
-<p>其实除了变得漂亮一点并没有什么用……</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -268,13 +383,6 @@ file.write(mdfile)</code></pre>
             </div>
             
             
-            
-            <div class="box sticky animated fadeInRight faster">
-                <div id="toc" class="subbox">
-                    <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#OpenCV%E5%AE%98%E7%BD%91%E6%96%87%E6%A1%A3%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">OpenCV官网文档：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C"><span class="toc-number">3.</span> <span class="toc-text">输出结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Basic-Operations-on-Images"><span class="toc-number"></span> <span class="toc-text">Basic Operations on Images</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Goal"><span class="toc-number"></span> <span class="toc-text">Goal</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Accessing-and-Modifying-pixel-values"><span class="toc-number"></span> <span class="toc-text">Accessing and Modifying pixel values</span></a>
-                </div>
-            </div>
             
             
         </div>

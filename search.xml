@@ -29,6 +29,35 @@
     </entry>
     
     
+    
+    <entry>
+      <title>Python实现N体运行模拟</title>
+      <link href="/2020/06/30/Python%E5%AE%9E%E7%8E%B0N%E4%BD%93%E8%BF%90%E8%A1%8C%E6%A8%A1%E6%8B%9F/"/>
+      <url>/2020/06/30/Python%E5%AE%9E%E7%8E%B0N%E4%BD%93%E8%BF%90%E8%A1%8C%E6%A8%A1%E6%8B%9F/</url>
+      
+        <content type="html"><![CDATA[<p>无意中翻到今年程序课的一个有意思的小练习，先把代码贴着，有空再来写</p><p>主程序:</p><pre><code class="python">import pygameimport sysfrom settings import Settingsclass Vector():    &quot;&quot;&quot;向量&quot;&quot;&quot;    def __init__(self, x, y):        self.x = x        self.y = y        self.mould = (x*x+y*y)**0.5def vec_minus(vec1, vec2):    &quot;&quot;&quot;向量相减（vec1 - vec2）&quot;&quot;&quot;    return Vector(vec1.x-vec2.x, vec1.y-vec2.y)def vec_add(vec1, vec2):    &quot;&quot;&quot;向量相加&quot;&quot;&quot;    return Vector(vec1.x+vec2.x, vec1.y+vec2.y)def vec_mult(num, vec):    &quot;&quot;&quot;向量数乘&quot;&quot;&quot;    return Vector(num*vec.x, num*vec.y)def judge_crash(body1, body2):    &quot;&quot;&quot;判断是否相撞&quot;&quot;&quot;    if vec_minus(body1.curR, body2.curR).mould &lt; 0.5:        return True    return Falseclass Force():    &quot;&quot;&quot;类：力，可添加其他种类的作用力&quot;&quot;&quot;    def __init__(self):        self.vec = Vector(0, 0)    def gravity(self, body1, body2):        &quot;&quot;&quot;计算万有引力&quot;&quot;&quot;        G = 6.67384e-11        delta = vec_minus(body2.curR, body1.curR)        F_g = vec_mult(G*body1.m*body2.m/(delta.mould ** 3), delta)        self.vec = vec_add(self.vec, F_g)class Body():    &quot;&quot;&quot;类：天体&quot;&quot;&quot;    def __init__(self, m, curR, preR, screen, body_settings):        self.m = m        self.curR = curR        self.preR = preR        self.f = Force()        self.screen = screen        self.color = body_settings.body_color        self.radius = body_settings.body_radius        self.zerox = body_settings.screen_width / 2        self.zeroy = body_settings.screen_height / 2    def draw(self):        &quot;&quot;&quot;显示&quot;&quot;&quot;        self.x = (int)(self.zerox + self.curR.x)        self.y = (int)(self.zeroy + self.curR.y)        self.pos = (self.x, self.y)        pygame.draw.circle(self.screen, self.color, self.pos, self.radius, 0)def move(bodys, body_settings):    &quot;&quot;&quot;根据牛顿第二定律，对天体进行移动&quot;&quot;&quot;    #先求出所有物体所受的力    for bodyi in bodys:        bodyi.f = Force()        for bodyj in bodys:            if bodyi != bodyj:                if judge_crash(bodyi, bodyj):                    return -1                bodyi.f.gravity(bodyi, bodyj)    #对所有星体的v,r进行计算    for bodyi in bodys:        dr = vec_minus(bodyi.curR, bodyi.preR)        delta = vec_mult(body_settings.dt**2/bodyi.m, bodyi.f.vec)        dr = vec_add(dr, delta)        bodyi.preR = bodyi.curR        bodyi.curR = vec_add(bodyi.curR, dr)def check_quit():    &quot;&quot;&quot;检查是否退出&quot;&quot;&quot;    for event in pygame.event.get():        if event.type == pygame.QUIT:            sys.exit(0)def show_crash_error(screen, body_settings):    &quot;&quot;&quot;显示相撞的错误信息&quot;&quot;&quot;    screen.fill((0, 0, 0))    fontObj = pygame.font.Font(None, 70)    #render方法返回Surface对象    textSurfaceObj = fontObj.render(        &#39;Error: Crashed!&#39;, True, (255, 0, 0), (0, 0, 255))    #get_rect()方法返回rect对象    textRectObj = textSurfaceObj.get_rect()    textRectObj.center = (body_settings.screen_width//2,                          body_settings.screen_height//2)    screen.blit(textSurfaceObj, textRectObj)    pygame.display.flip()#初始化pygame以及相关设置pygame.init()body_settings = Settings()screen = pygame.display.set_mode(    (body_settings.screen_width, body_settings.screen_height))#读取天体配置文件filename = sys.path[0]+&#39;\\Nbody.txt&#39;with open(filename) as file_object:    lines = file_object.readlines()body_num = int(lines[0])body_settings.dt = 1/int(lines[1])bodys = []for i in range(body_num):    paras = lines[i+2].split(&#39; &#39;, 4)    mass = float(paras[0])    curR = Vector(float(paras[1]), float(paras[2]))    veloc = Vector(float(paras[3]), float(paras[4]))    preR = vec_minus(curR, vec_mult(body_settings.dt, veloc))    bodyi = Body(mass, curR, preR, screen, body_settings)    bodys.append(bodyi)pygame.display.set_caption(&quot;Verlet-method N-body Simulation&quot;)#开始循环while(1):    check_quit()    screen.fill(body_settings.bg_color)    if move(bodys, body_settings) == -1:        break    for bodyi in bodys:        bodyi.draw()    pygame.display.flip()show_crash_error(screen, body_settings)while(1):    check_quit()</code></pre><p>配置文件和数据：</p><pre><code class="python">class Settings():    def __init__(self):        self.screen_width = 750        self.screen_height = 750        self.bg_color = (0, 0, 0)        self.body_color = (225, 225, 153)        self.body_radius = 5        self.dt = 1/10000</code></pre><pre><code class="txt">35000005.97e15 0.0 0.0 10000.0 0.01.989e21 0.0 45 3.0e4 0.01.989e21 0.0 -45 -3.0e4 0.02200001.0e20 0.0 300 1.0e3 0.01.0e20 0.0 -300 -1.0e3 0.03100001.0e20 0.0 0.0 0.0 0.01.0e5 0.0 266.8 5.0e3 0.01.0e5 0.0 -266.8 -5.0e3 0.0</code></pre><p>算法很简单，毕竟不是物理专业，只不过是用了下面这个公式（其实就是微积分）<br>$$<br>r_{n+1} = r_n +(r_n - r_{n-1}) + a_n{dt}^2<br>$$</p><blockquote><p>Verlet Method</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Programing </category>
+          
+          <category> Caculation </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> Pygame </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
 </search>
