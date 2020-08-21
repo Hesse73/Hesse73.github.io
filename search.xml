@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>Python爬取OpenCV官方文档并保存为Markdown文件</title>
+      <title>Python获取OpenCV官方文档并保存为Markdown文件</title>
       <link href="/2020/08/21/Python%E7%88%AC%E5%8F%96OpenCV%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%B9%B6%E4%BF%9D%E5%AD%98%E4%B8%BAMarkdown%E6%96%87%E4%BB%B6/"/>
       <url>/2020/08/21/Python%E7%88%AC%E5%8F%96OpenCV%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%B9%B6%E4%BF%9D%E5%AD%98%E4%B8%BAMarkdown%E6%96%87%E4%BB%B6/</url>
       
@@ -15,16 +15,12 @@
           
           <category> Programing </category>
           
-          <category> Spider </category>
-          
       </categories>
       
       
         <tags>
             
             <tag> Python </tag>
-            
-            <tag> Selenium </tag>
             
             <tag> Beautiful Soup </tag>
             
@@ -53,9 +49,9 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> Python </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
