@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>某技校健康打卡脚本</title>
+      <link href="/2020/09/13/%E6%9F%90%E6%8A%80%E6%A0%A1%E5%81%A5%E5%BA%B7%E6%89%93%E5%8D%A1%E8%84%9A%E6%9C%AC/"/>
+      <url>/2020/09/13/%E6%9F%90%E6%8A%80%E6%A0%A1%E5%81%A5%E5%BA%B7%E6%89%93%E5%8D%A1%E8%84%9A%E6%9C%AC/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Slenium版本"><a href="#Slenium版本" class="headerlink" title="Slenium版本"></a>Slenium版本</h2><p>很简单，直接模拟登录就好了……</p><pre><code class="python">import timefrom selenium import webdriverfrom selenium.webdriver.common.keys import Keysfrom selenium.common.exceptions import NoSuchElementException#设置链接地址url = r&#39;https://passport.ustc.edu.cn/login?service=https%3A%2F%2Fweixine.ustc.edu.cn%2F2020%2Fcaslogin&#39;#设置登录信息usr = &#39;认证系统用户名&#39;pwd = &#39;认证系统密码&#39;#打开chromedriver = webdriver.Chrome()# 用get打开登录页面并找到填充的元素driver.get(url)#自动登录InputName = driver.find_element_by_id(&#39;username&#39;)InputPwd = driver.find_element_by_id(&#39;password&#39;)LoginBtn = driver.find_element_by_id(&#39;login&#39;)InputName.send_keys(usr)InputPwd.send_keys(pwd)LoginBtn.click()#此处需要手动暂停，已保证网页自动加载以往打卡配置time.sleep(1)#进入上报界面找到上报按钮，点击即可ReportBtn = driver.find_element_by_id(&#39;report-submit-btn&#39;)#滚动至按钮显示js = &#39;document.getElementById(&quot;report-submit-btn&quot;).scrollIntoView()&#39;driver.execute_script(js)#点击按钮ReportBtn.click()try:    AlertMsg = driver.find_element_by_class_name(&#39;alert&#39;)    print(AlertMsg.text)except:    print(&#39;failed with clicking report button&#39;)driver.close()</code></pre><h2 id="直接用Requests-bs4"><a href="#直接用Requests-bs4" class="headerlink" title="直接用Requests+bs4"></a>直接用Requests+bs4</h2><p>这个实在是太麻烦了，要配置一堆东西，还不如下个chromedriver方便 qwq</p><p>Github上有位大佬用这种方法写了：<a href="https://github.com/xbb1973/USTC-ncov-AutoReport/blob/master/Autoreport.py">点击查看</a></p><p>膜拜</p><p>放到服务器上开个crontab定时打卡应该会很方便（尽管我还并没有试过）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Programing </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>下载百度文库非VIP专享资源</title>
       <link href="/2020/08/21/%E4%B8%8B%E8%BD%BD%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E9%9D%9EVIP%E4%B8%93%E4%BA%AB%E8%B5%84%E6%BA%90/"/>
       <url>/2020/08/21/%E4%B8%8B%E8%BD%BD%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E9%9D%9EVIP%E4%B8%93%E4%BA%AB%E8%B5%84%E6%BA%90/</url>
