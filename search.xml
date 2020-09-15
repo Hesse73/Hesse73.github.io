@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Python实现元胞自动机(尚未完成)</title>
+      <link href="/2020/09/15/Python%E5%AE%9E%E7%8E%B0%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%B0%9A%E6%9C%AA%E5%AE%8C%E6%88%90/"/>
+      <url>/2020/09/15/Python%E5%AE%9E%E7%8E%B0%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%B0%9A%E6%9C%AA%E5%AE%8C%E6%88%90/</url>
+      
+        <content type="html"><![CDATA[<h2 id="生命游戏源码"><a href="#生命游戏源码" class="headerlink" title="生命游戏源码"></a>生命游戏源码</h2><p>睡觉前一次性写完的，还没经过测试QAQ</p><pre><code class="python">import sysimport timeimport pygameimport numpy as npclass Settings():    &quot;设置&quot;    def __init__(self):        self.width = 512        self.height = 512        self.bg_color = (255, 255, 255)        self.cell_color = (0, 0, 0)        self.map = &#39;map.txt&#39;class Cellmap():    def __init__(self, game_settings):        #初始化一个 Width * Height 的矩阵        self.width = game_settings.width        self.height = game_settings.height        self.map = np.zeros((self.width, self.height), np.bool_)        with open(game_settings.map, &#39;r&#39;) as fileobj:            for line in fileobj.readlines():                paras = line.split(&#39; &#39;, 1)                coord_x = int(paras[0])                coord_y = int(paras[1])                self.map.itemset((coord_x, coord_y), True)    def update(self):        new_map = np.zeros((self.width, self.height), np.bool_)        for i in range(1, self.width-2):            for j in range(1, self.height-2):                center = self.map.item(i, j)                count = 0                for cells in self.map[i-2:i+1, j-2:j+1]:                    for cell in cells:                        if cell:                            count += 1                if center == 1:                    if count &lt;= 4 and count &gt;= 3:                        new_map.itemset((i, j), 1)                else:                    if count &gt;= 3:                        new_map.itemset((i, j), 1)        self.map = new_map.copy()def check_events(screen, cellmap):    for event in pygame.event.get():        if event.type == pygame.QUIT:            sys.exit(0)def update_screen(game_settings, screen, cellmap):    screen.fill(game_settings.bg_color)    cellmap.update()    for i in range(1, game_settings.width-1):        for j in range(1, game_settings.height):            if(cellmap.map.item(i, j)):                pygame.draw.circle(screen, game_settings.cell_color, (i, j), 1)    #让刚绘制的屏幕可见    pygame.display.flip()def run_game():    #初始化游戏并创造一个屏幕对象    pygame.init()    game_settings = Settings()    screen = pygame.display.set_mode(        [game_settings.width, game_settings.height])    pygame.display.set_caption(&#39;Game of Life&#39;)    #初始化一个分布    cellmap = Cellmap(game_settings)    #开始游戏主循环    while True:        check_events(screen, cellmap)        update_screen(game_settings, screen, cellmap)        #time.sleep(0.1)run_game()</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Programing </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>某技校健康打卡脚本</title>
       <link href="/2020/09/13/%E6%9F%90%E6%8A%80%E6%A0%A1%E5%81%A5%E5%BA%B7%E6%89%93%E5%8D%A1%E8%84%9A%E6%9C%AC/"/>
       <url>/2020/09/13/%E6%9F%90%E6%8A%80%E6%A0%A1%E5%81%A5%E5%BA%B7%E6%89%93%E5%8D%A1%E8%84%9A%E6%9C%AC/</url>
