@@ -5,19 +5,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Python实现元胞自动机(尚未完成) - Mind Groceries</title>
+    <title>某技校健康打卡脚本 - Mind Groceries</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Computer Blog Obsidian,"> 
-    <meta name="description" content="I love chocolate,生命游戏源码睡觉前一次性写完的，还没经过测试QAQ
-import sys
+    <meta name="description" content="I love chocolate,Slenium版本很简单，直接模拟登录就好了……
 import time
-import pygame
-import numpy as np
-
-
-class Settings(,"> 
+from selenium import webdriver
+from selenium.webdriver.common.,"> 
     <meta name="author" content="Huang C"> 
     <link rel="alternative" href="atom.xml" title="Mind Groceries" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -64,7 +60,7 @@ class Settings(,">
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://github.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">Python实现元胞自动机(尚未完成)</h3>
+        <h3 class="subtitle">某技校健康打卡脚本</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -97,22 +93,22 @@ class Settings(,">
                 <a href="/categories/Programing"><b>「
                     </b>PROGRAMING<b> 」</b></a>
                 
-                September 15, 2020
+                August 13, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2020/09/15/Python%E5%AE%9E%E7%8E%B0%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%B0%9A%E6%9C%AA%E5%AE%8C%E6%88%90/" title="Python实现元胞自动机(尚未完成)" class="">Python实现元胞自动机(尚未完成)</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/08/13/%E6%9F%90%E6%8A%80%E6%A0%A1%E5%81%A5%E5%BA%B7%E6%89%93%E5%8D%A1%E8%84%9A%E6%9C%AC/" title="某技校健康打卡脚本" class="">某技校健康打卡脚本</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    2.6k
+                    1.6k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    2 mins.
+                    1 mins.
                 </span>
                 
                 
@@ -146,92 +142,49 @@ class Settings(,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="生命游戏源码"><a href="#生命游戏源码" class="headerlink" title="生命游戏源码"></a>生命游戏源码</h2><p>睡觉前一次性写完的，还没经过测试QAQ</p>
-<pre><code class="python">import sys
-import time
-import pygame
-import numpy as np
+            <h2 id="Slenium版本"><a href="#Slenium版本" class="headerlink" title="Slenium版本"></a>Slenium版本</h2><p>很简单，直接模拟登录就好了……</p>
+<pre><code class="python">import time
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException
 
+#设置链接地址
+url = r&#39;https://passport.ustc.edu.cn/login?service=https%3A%2F%2Fweixine.ustc.edu.cn%2F2020%2Fcaslogin&#39;
+#设置登录信息
+usr = &#39;认证系统用户名&#39;
+pwd = &#39;认证系统密码&#39;
 
-class Settings():
-    &quot;设置&quot;
+#打开chrome
+driver = webdriver.Chrome()
 
-    def __init__(self):
-        self.width = 512
-        self.height = 512
-        self.bg_color = (255, 255, 255)
-        self.cell_color = (0, 0, 0)
-        self.map = &#39;map.txt&#39;
-
-
-class Cellmap():
-    def __init__(self, game_settings):
-        #初始化一个 Width * Height 的矩阵
-        self.width = game_settings.width
-        self.height = game_settings.height
-        self.map = np.zeros((self.width, self.height), np.bool_)
-        with open(game_settings.map, &#39;r&#39;) as fileobj:
-            for line in fileobj.readlines():
-                paras = line.split(&#39; &#39;, 1)
-                coord_x = int(paras[0])
-                coord_y = int(paras[1])
-                self.map.itemset((coord_x, coord_y), True)
-
-    def update(self):
-        new_map = np.zeros((self.width, self.height), np.bool_)
-        for i in range(1, self.width-2):
-            for j in range(1, self.height-2):
-                center = self.map.item(i, j)
-                count = 0
-                for cells in self.map[i-2:i+1, j-2:j+1]:
-                    for cell in cells:
-                        if cell:
-                            count += 1
-                if center == 1:
-                    if count &lt;= 4 and count &gt;= 3:
-                        new_map.itemset((i, j), 1)
-                else:
-                    if count &gt;= 3:
-                        new_map.itemset((i, j), 1)
-        self.map = new_map.copy()
-
-
-def check_events(screen, cellmap):
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit(0)
-
-
-def update_screen(game_settings, screen, cellmap):
-    screen.fill(game_settings.bg_color)
-    cellmap.update()
-    for i in range(1, game_settings.width-1):
-        for j in range(1, game_settings.height):
-            if(cellmap.map.item(i, j)):
-                pygame.draw.circle(screen, game_settings.cell_color, (i, j), 1)
-    #让刚绘制的屏幕可见
-    pygame.display.flip()
-
-
-def run_game():
-    #初始化游戏并创造一个屏幕对象
-    pygame.init()
-    game_settings = Settings()
-    screen = pygame.display.set_mode(
-        [game_settings.width, game_settings.height])
-    pygame.display.set_caption(&#39;Game of Life&#39;)
-
-    #初始化一个分布
-    cellmap = Cellmap(game_settings)
-
-    #开始游戏主循环
-    while True:
-        check_events(screen, cellmap)
-        update_screen(game_settings, screen, cellmap)
-        #time.sleep(0.1)
-
-
-run_game()</code></pre>
+# 用get打开登录页面并找到填充的元素
+driver.get(url)
+#自动登录
+InputName = driver.find_element_by_id(&#39;username&#39;)
+InputPwd = driver.find_element_by_id(&#39;password&#39;)
+LoginBtn = driver.find_element_by_id(&#39;login&#39;)
+InputName.send_keys(usr)
+InputPwd.send_keys(pwd)
+LoginBtn.click()
+#此处需要手动暂停，已保证网页自动加载以往打卡配置
+time.sleep(1)
+#进入上报界面找到上报按钮，点击即可
+ReportBtn = driver.find_element_by_id(&#39;report-submit-btn&#39;)
+#滚动至按钮显示
+js = &#39;document.getElementById(&quot;report-submit-btn&quot;).scrollIntoView()&#39;
+driver.execute_script(js)
+#点击按钮
+ReportBtn.click()
+try:
+    AlertMsg = driver.find_element_by_class_name(&#39;alert&#39;)
+    print(AlertMsg.text)
+except:
+    print(&#39;failed with clicking report button&#39;)
+driver.close()</code></pre>
+<h2 id="直接用Requests-bs4"><a href="#直接用Requests-bs4" class="headerlink" title="直接用Requests+bs4"></a>直接用Requests+bs4</h2><p>这个实在是太麻烦了，要配置一堆东西，还不如下个chromedriver方便 qwq</p>
+<p>Github上有位大佬用这种方法写了：<a href="https://github.com/xbb1973/USTC-ncov-AutoReport/blob/master/Autoreport.py">点击查看</a></p>
+<p>膜拜</p>
+<p>放到服务器上开个crontab定时打卡应该会很方便（尽管我还并没有试过）</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -290,7 +243,7 @@ run_game()</code></pre>
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F%E6%BA%90%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">生命游戏源码</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Slenium%E7%89%88%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">Slenium版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E7%94%A8Requests-bs4"><span class="toc-number">2.</span> <span class="toc-text">直接用Requests+bs4</span></a></li></ol>
                 </div>
             </div>
             

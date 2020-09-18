@@ -5,12 +5,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Archive: 2020/9</title>
+    <title>Python实现元胞自动机(尚未测试) - Mind Groceries</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Computer Blog Obsidian,"> 
-    <meta name="description" content="I love chocolate,"> 
+    <meta name="description" content="I love chocolate,生命游戏源码睡觉前一次性写完的，还没测试过
+import sys
+import time
+import pygame
+import numpy as np
+
+
+class Settings():
+ ,"> 
     <meta name="author" content="Huang C"> 
     <link rel="alternative" href="atom.xml" title="Mind Groceries" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -50,39 +58,97 @@
     </div>
     <span id="config-title" style="display:none">Mind Groceries</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://github.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Python实现元胞自动机(尚未测试)</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="dark-obsidian section">
-        <div class="article animated fadeIn">
-            <div class="main">
-                <div class="content animated fadeIn">
-                    <div class="set">
-                        <h1 style="text-align: center">Archived</h1>
-                        <p style="text-align: center">「 4 」</p>
-                        <ul class="timeline timeline-centered">
-                            
-                            
-                                
-                                <li class="timeline-item period">
-                                    <div class="timeline-info"></div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <h2 class="timeline-title">September 2020</h2>
-                                    </div>
-                                </li>
-                                
-                                <li class="timeline-item">
-                                    <div class="timeline-info">
-                                        <span class="gradient-text">September 15, 2020</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2020/09/15/Python%E5%AE%9E%E7%8E%B0%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%B0%9A%E6%9C%AA%E5%AE%8C%E6%88%90/">Python实现元胞自动机(尚未完成)</a>
-                                        <p>
-                                            生命游戏源码睡觉前一次性写完的，还没经过测试QAQ
-import sys
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/Programing"><b>「
+                    </b>PROGRAMING<b> 」</b></a>
+                
+                April 15, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/04/15/Python%E5%AE%9E%E7%8E%B0%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%B0%9A%E6%9C%AA%E5%AE%8C%E6%88%90/" title="Python实现元胞自动机(尚未测试)" class="">Python实现元胞自动机(尚未测试)</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    2.6k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    2 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="生命游戏源码"><a href="#生命游戏源码" class="headerlink" title="生命游戏源码"></a>生命游戏源码</h2><p>睡觉前一次性写完的，还没测试过</p>
+<pre><code class="python">import sys
 import time
 import pygame
 import numpy as np
@@ -94,90 +160,148 @@ class Settings():
     def __init__(self):
         self.width = 512
         self.height = 512
-...
-                                        </p>
-                                    </div>
-                                </li>
-                            
-                                
-                                <li class="timeline-item">
-                                    <div class="timeline-info">
-                                        <span class="gradient-text">September 13, 2020</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2020/09/13/%E6%9F%90%E6%8A%80%E6%A0%A1%E5%81%A5%E5%BA%B7%E6%89%93%E5%8D%A1%E8%84%9A%E6%9C%AC/">某技校健康打卡脚本</a>
-                                        <p>
-                                            Slenium版本很简单，直接模拟登录就好了……
-import time
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import NoSuchElementException
+        self.bg_color = (255, 255, 255)
+        self.cell_color = (0, 0, 0)
+        self.map = &#39;map.txt&#39;
 
-#设置链接地址
-url = r&#3...
-                                        </p>
-                                    </div>
-                                </li>
-                            
-                                
-                                <li class="timeline-item period">
-                                    <div class="timeline-info"></div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <h2 class="timeline-title">August 2020</h2>
-                                    </div>
-                                </li>
-                                
-                                <li class="timeline-item">
-                                    <div class="timeline-info">
-                                        <span class="gradient-text">August 21, 2020</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2020/08/21/%E4%B8%8B%E8%BD%BD%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E9%9D%9EVIP%E4%B8%93%E4%BA%AB%E8%B5%84%E6%BA%90/">下载百度文库非VIP专享资源</a>
-                                        <p>
-                                            Word文档、TXT、PDF和XLS这个直接手动复制就行
-如果是Chrome，直接按F12进开发者选项 -&gt; F1进高级设置 -&gt; 找到“Debugger”，点击“Disabe Javascript”，禁用Javascript就可以复制.
 
-PPT文档百度文库的PPT是以图片显示的，如果下载只能把图片全部爬取然后转格式
-下面用Selenium + Chrome来操作一下：
-imp...
-                                        </p>
-                                    </div>
-                                </li>
-                            
-                                
-                                <li class="timeline-item">
-                                    <div class="timeline-info">
-                                        <span class="gradient-text">August 21, 2020</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2020/08/21/Python%E8%8E%B7%E5%8F%96OpenCV%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%B9%B6%E4%BF%9D%E5%AD%98%E4%B8%BAMarkdown%E6%96%87%E4%BB%B6/">Python获取OpenCV官方文档并保存为Markdown文件</a>
-                                        <p>
-                                            看到一个html转markdown的工具，拿来试试保存OpenCV文档&lt;(￣︶￣)
+class Cellmap():
+    def __init__(self, game_settings):
+        #初始化一个 Width * Height 的矩阵
+        self.width = game_settings.width
+        self.height = game_settings.height
+        self.map = np.zeros((self.width, self.height), np.bool_)
+        with open(game_settings.map, &#39;r&#39;) as fileobj:
+            for line in fileobj.readlines():
+                paras = line.split(&#39; &#39;, 1)
+                coord_x = int(paras[0])
+                coord_y = int(paras[1])
+                self.map.itemset((coord_x, coord_y), True)
 
-OpenCV官网文档：如图所示，“top”和“footer”部分是不需要的内容，直接删除即可：
+    def update(self):
+        new_map = np.zeros((self.width, self.height), np.bool_)
+        for i in range(1, self.width-2):
+            for j in range(1, self.height-2):
+                center = self.map.item(i, j)
+                count = 0
+                for cells in self.map[i-2:i+1, j-2:j+1]:
+                    for cell in cells:
+                        if cell:
+                            count += 1
+                if center == 1:
+                    if count &lt;= 4 and count &gt;= 3:
+                        new_map.itemset((i, j), 1)
+                else:
+                    if count &gt;= 3:
+                        new_map.itemset((i, j), 1)
+        self.map = new_map.copy()
 
-网页中的代码框并非使用code标签，需要更改：
-程序import requests
-from bs4 import BeautifulSoup
-import html2text as ht
 
-#打开并解析...
-                                        </p>
-                                    </div>
-                                </li>
-                            
-                        </ul>
-                    </div>
+def check_events(screen, cellmap):
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit(0)
+
+
+def update_screen(game_settings, screen, cellmap):
+    screen.fill(game_settings.bg_color)
+    cellmap.update()
+    for i in range(1, game_settings.width-1):
+        for j in range(1, game_settings.height):
+            if(cellmap.map.item(i, j)):
+                pygame.draw.circle(screen, game_settings.cell_color, (i, j), 1)
+    #让刚绘制的屏幕可见
+    pygame.display.flip()
+
+
+def run_game():
+    #初始化游戏并创造一个屏幕对象
+    pygame.init()
+    game_settings = Settings()
+    screen = pygame.display.set_mode(
+        [game_settings.width, game_settings.height])
+    pygame.display.set_caption(&#39;Game of Life&#39;)
+
+    #初始化一个分布
+    cellmap = Cellmap(game_settings)
+
+    #开始游戏主循环
+    while True:
+        check_events(screen, cellmap)
+        update_screen(game_settings, screen, cellmap)
+        #time.sleep(0.1)
+
+
+run_game()</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/RhapsodyOnAThemeOfPaganini.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+    <div id='gitalk-container' class="comment link"
+        data-ae='true'
+        data-ci='a25e56754322e7a1dac3'
+        data-cs='d08739d57233304c7a4f3e9e2821d76f1bc46cd8'
+        data-r='BlogComments'
+        data-o='Hesse73'
+        data-a='Hesse73'
+        data-d=''
+    >Comments</div>
+
+
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
+                    <p>Huang C</p>
+                    <span>hope I won't write articles that look similar after RSA encryption</span>
+                    <dl>
+                        <dd><a href="https://github.com/Hesse73" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/Hesse731" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="#" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">4 <p>Articles</p></a></li>
+                    <li><a href="/categories">1 <p>Categories</p></a></li>
+                    <li><a href="/tags">3 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F%E6%BA%90%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">生命游戏源码</span></a></li></ol>
                 </div>
             </div>
+            
+            
         </div>
     </div>
 </div>
 
+    </div>
+</div>
     <div id="back-to-top" class="animated fadeIn faster">
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>
